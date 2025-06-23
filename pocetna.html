@@ -1,0 +1,294 @@
+<html>
+
+<head>
+<meta charset='UTF-8'>
+<title> Deseta u eteru </title>
+
+<style>
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width:250px;
+  background-color:white;
+  color:black;
+  height: 100%;
+  position:fixed;
+}
+
+.sidebar img {
+  width: 150px;
+  height: 172px;
+  object-fit: cover;
+  display: block; 
+  margin: 0 auto;
+}
+
+.sidebar ul {
+  list-style-type:none;
+  padding:0;
+  margin:0;
+}
+
+.sidebar li {
+  border-bottom:1px solid #555;
+  border-top:1px solid #555;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s, z-index 0.3s;
+}
+
+.sidebar li:hover {
+  transform: scale(1.05); 
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sidebar a {
+  color:#3886DC;
+  text-decoration:none;
+  padding:8px 20px;
+  display:block;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #79b8fc;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-left: 35px;
+}
+
+.sidebar a.active {
+  color:white;
+  background-color: #3886DC;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8em;
+  padding: 10px;
+  color: #3886DC;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.social-links a {
+  display: inline-flex;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+  opacity: 0.8;
+  background-color: transparent;
+  padding: 0;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.website-icon {
+  fill: #3886DC;
+}
+
+.instagram-icon {
+  fill: #E1306C;
+}
+
+.youtube-icon {
+  fill: #FF0000;
+}
+
+.content{
+  margin-left:290px;
+  padding:20px;
+  flex:1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.content p {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+}
+
+.content-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.content-text {
+  flex: 1;
+}
+
+.content-image {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px; 
+}
+
+.content-image img {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.content-image img:hover {
+  transform: scale(1.03);
+}
+
+/* Stilovi za Youtube iframe */
+.video-container {
+  display: inline-block;
+  width: 70%;
+  margin: 15px;
+}
+
+.youtube-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.youtube-video:hover {
+  transform: scale(1.03);
+}
+
+/* Responsivnost za mobilne uređaje */
+@media (max-width: 768px) {
+  .content-flex {
+    flex-direction: column;
+  }
+  
+  .content-image {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .video-container {
+    width: 100%;
+    margin: 15px 0;
+  }
+}
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="sidebar">
+<img src="Logo.png"  style="width:180px">
+<ul>
+  <li><a href="pocetna.html" class = 'Active'> Početna stranica </a></li>
+  <li><a href="etika.html" > Etika </a></li>
+  <li><a href="vjeronauk.html" > Vjeronauk </a></li>
+  <li><a href="osc.html" > Osmo svjetsko čudo </a></li>
+  <li><a href="p4.html" > s4 </a></li>
+  <li><a href="p5.html" > s5 </a></li>
+  <li><a href="p6.html" > s6 </a></li>
+</ul>
+<div class="copyright">
+  <div class="social-links">
+    <a href="https://deseta-gimnazija.hr/" title="Službena stranica" target="_blank">
+      <svg class="social-icon website-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/x.gimnazija/" title="Instagram" target="_blank">
+      <svg class="social-icon instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/channel/UCa2uHMwq8VCYTDcOws9AmTA" title="YouTube" target="_blank">
+      <svg class="social-icon youtube-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+      </svg>
+    </a>
+  </div>
+  &copy; 2025 Djelo učenika 3. i 4. razreda </br> X. gimnazije Ivan Supek
+</div>
+</div>
+
+
+<div class="content">
+
+
+<!-- Novi fleksibilni kontejner za tekst i sliku -->
+<div class="content-flex">
+  <div class="content-text">
+
+<!-- VAŠ RAD POČINJE TU -->
+
+    <p style="font-size: 26px;"> <b> Deseta u eteru </b>| podcatsy iz vjeronauka i etike </p></br>
+    <p>
+	Ovaj projekt nastao je kroz interdisciplinarnu suradnju različitih predmeta koja uključuje učenike 3. i 4. razreda X. gimnazije Ivan Supek. 
+	Kroz raznolike aktivnosti, učenici su imali priliku primijeniti znanja iz različitih područja na kreativne i praktične načine.
+    </p>
+  
+    <p>
+	Kroz rad na projektu, učenici su stekli praktično iskustvo u različitim vještinama - od montaže videa i uređivanja slika, 
+	preko izvođenja preciznih mjerenja i analize podataka, do pisanja blogova i izrade web sadržaja. Ovaj projekt pokazuje kako se tehničke i 
+	prirodoslovne vještine mogu uspješno povezati s humanističkim i društvenim znanjima.
+    </p>
+    <p>
+	Cilj projekta je potaknuti kritičko razmišljanje, kreativno izražavanje i razvoj različitih oblika pismenosti - digitalne, znanstvene i financijske. 
+	Pozivamo vas da istražite sve učeničke radove putem izbornika.
+    </p>
+  </div>
+  
+  <div class="content-image">
+      <div class="video-container">
+  	<iframe class="youtube-video" src="https://www.youtube.com/embed/m24MsU0D7Q0" title="Prava životinja 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+  </div>
+</div>
+  
+</div>
+</div>
+</body>
+</html>
