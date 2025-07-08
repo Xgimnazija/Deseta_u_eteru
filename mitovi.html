@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitovi Desete</title>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: white;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #bfa133; /* zlatna nijansa */
+            font-family: 'Uncial Antiqua', cursive;
+        }
+
+        .pleter {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20"><path d="M0 0h10v10H0v10h20V10h-10V0h20v20H0z" fill="gold"/></svg>');
+            background-repeat: repeat-x;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #bfa133;
+        }
+        h1 {
+            color: #bfa133;
+        }
+
+        p::first-letter {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #bfa133;
+        }
+
+        .video-section, .gallery {
+            margin-top: 40px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            margin: 10px;
+            border: 2px solid gold;
+            border-radius: 8px;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mitovi Desete</h1>
+        <div class="pleter"></div>
+    </header>
+    <div class="content">
+        <h1>Mit o Eneji i Didoni</h1>
+        <p>
+            Upoznavanje s mitom...
+        </p>
+
+
+        <p>
+            Tekst vrline i etika u mitu
+        </p>
+
+
+        <p>
+            Tekst glazba/opera
+        </p>
+
+        <div class="video-section">
+            <p>Predstava inspirirana mitom</p>
+            <video width="100%" controls>
+                <source src="video/predstava.mp4" type="video/mp4">
+                Vaš preglednik ne podržava video element.
+            </video>
+        </div>
+
+        <div class="gallery">
+            <h2>Galerija slika</h2>
+            <div class="gallery-container">
+                <img src="slike/slika1.jpg" alt="Prizor 1">
+                <img src="slike/slika2.jpg" alt="Prizor 2">
+                <img src="slike/slika3.jpg" alt="Prizor 3">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
