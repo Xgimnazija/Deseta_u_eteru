@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alan Turing - britanski matematičar, kriptograf i otac računalne znanosti. Saznaj o njegovom životu, dostignućima i nasljeđu.">
+    <title>Alan Turing - Otac računalne znanosti</title>
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p.subtitle { font-size: 1.2rem; opacity: 0.9; }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        nav {
+            background: #34495e;
+            padding: 0.4rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0.4rem;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover, nav a.active {
+            background: #3498db;
+            border-bottom-color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        .content { padding: 2rem; }
+
+        section.section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #3498db, #e74c3c);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.85rem;
+            top: 1rem;
+            width: 15px;
+            height: 15px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .year { font-weight: bold; color: #e74c3c; font-size: 1.1rem; }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(52,152,219,0.1), rgba(46,204,113,0.1));
+            border-left: 5px solid #3498db;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            nav ul { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); max-width: none; gap: 0; }
+            .content { padding: 1rem; }
+            section.section { padding: 1.5rem; }
+            h2 { font-size: 1.5rem; }
+            .timeline { padding-left: 1.5rem; }
+            .achievements { grid-template-columns: 1fr; gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .content { padding: 0.5rem; }
+            section.section { padding: 1rem; margin-bottom: 1.5rem; }
+            .quote { padding: 1rem; font-size: 1rem; }
+            .highlight-box { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alan Turing</h1>
+            <p class="subtitle">Otac računalne znanosti</p>
+        </header>
+
+        <nav aria-label="Glavna navigacija">
+            <ul>
+                <li><a href="#biografija">Biografija</a></li>
+                <li><a href="#dostignuca">Dostignuća</a></li>
+                <li><a href="#timeline">Vremenska crta</a></li>
+                <li><a href="#nasljedstvo">Nasljeđe</a></li>
+            </ul>
+        </nav>
+
+        <blockquote class="quote">
+            "Možemo vidjeti samo kratku udaljenost unaprijed, ali možemo vidjeti da tamo ima puno posla koji treba obaviti."
+        </blockquote>
+
+        <div class="content">
+            <section id="biografija" class="section">
+                <h2>Biografija</h2>
+                <p>Alan Mathison Turing (23. lipnja 1912. – 7. lipnja 1954.) bio je britanski 
+		matematičar, logičar, kriptograf i informatičar koji se smatra jednim od najutjecajnijih 
+		znanstvenika 20. stoljeća. Dao je fundamentalne doprinose 
+		razvoju računalne znanosti, teoriji izračunljivosti i umjetnoj inteligenciji postaviši temelje 
+		za modernu digitalnu eru.
+Obrazovao se na prestižnom King's Collegeu u Cambridgeu, gdje je diplomirao matematiku s odličnim uspjehom. 
+Nakon čega doktoririra na Princeton University gdje je razvio interes za logiku i računanje koji će kasnije oblikovati njegov revolucionarni rad.
+ Bio je pionir u razvoju teorijskih i praktičnih modela računala, a njegovi doprinosi tijekom Drugog svjetskog rata spasili su milijune života.</p>
+
+            </section>
+
+            <section id="dostignuca" class="section">
+                <h2>Glavna dostignuća</h2>
+                <div class="achievements">
+                    <div class="achievement-card">
+                        <h3>Turingov stroj</h3>
+                        <p>Osmislio apstraktni matematički model koji je definirao 
+			osnove modernog računanja, čime je postavio temelje za 
+			razumijevanje onoga što računalo može ili ne može riješiti.</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>Rušenje Enigma koda</h3>
+                        <p>Radio u Bletchley Parku (tajnom britanskom centru za dešifriranje), gdje
+			je odigrao ključnu ulogu u rušenju njemačkog Enigma koda tijekom 
+			Drugog svjetskog rata.</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>Turingov test</h3>
+                        <p>Predložio test za procjenu može li stroj pokazati inteligentno ponašanje ekvivalentno ljudskom ili nerazlučivo od njega.</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>Morfogeneza</h3>
+                        <p>Pionirski rad na matematičkom modeliranju bioloških obrazaca i procesa rasta u prirodi, koji je otvorio novu granu u biologiji i matematici.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="timeline" class="section">
+                <h2>Vremenska crta života</h2>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="year">1912.</div>
+                        <p>Rođen u Maida Vale, London</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1931.-1934.</div>
+                        <p>Studij matematike na King's College, Cambridge</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1936.</div>
+                        <p>Objavljuje rad "On Computable Numbers" - uvodi koncept Turingova stroja</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1939.-1945.</div>
+                        <p>Rad u Bletchley Parku na rušenju Enigma koda</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1950.</div>
+                        <p>Objavljuje "Computing Machinery and Intelligence" - uvodi Turingov test</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1952.</div>
+                        <p>Rad na morfogenezi - matematičko modeliranje bioloških obrazaca</p>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="year">1954.</div>
+                        <p>Smrt u Wilmslowu, Cheshire, u dobi od 41 godine</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="nasljedstvo" class="section">
+                <h2>Nasljeđe i utjecaj</h2>
+                <p>Danas se Alan Turing smatra ocem računalne znanosti i umjetne inteligencije. Njegova vizija inteligentnih strojeva i teorijski okviri postavili su temelje za razumijevanje računanja, inteligencije i prirode samog mišljenja. Bez njegovih pionirskih radova moderni digitalni svijet kakav poznajemo ne bi postojao.</p>
+
+                <div class="highlight-box">
+                    <strong>Moderna priznanja:</strong><br>
+                    • Turing Award - "Nobel za računalne znanosti"<br>
+                    • Turing Institut - britanski nacionalni institut za znanost o podacima<br>
+                    • Pojava na britanskoj novčanici od 50 funti (2021.)<br>
+                    • Posthumno pomilovanje 2013. godine
+                </div>
+
+                <p> Tragična smrt u 46. godini života učinila je od njega ne samo znanstvenu legendu već i simbol borbe protiv diskriminacije. Turing ostaje jednom od najutjecajnijih figura u povijesti znanosti čiji revolucionarni doprinosi nastavljaju inspirirati nova otkrića i oblikovati budućnost tehnologije.</p>
+
+                <blockquote class="quote">
+                    "Stroj od mene ne očekuje da budem nepogrešiv. Ako napravim grešku, on će se zaustaviti i omogućiti mi da je ispravim."
+                </blockquote>
+            </section>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Scroll highlight using class
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop) { current = section.getAttribute('id'); }
+            });
+
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`nav a[href="#${current}"]`);
+            if (activeLink) activeLink.classList.add('active');
+        });
+    </script>
+</body>
+</html>
