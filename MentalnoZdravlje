@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identitet, mediji i mentalno zdravlje</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg:       #111111;
+    --text:     #e8e8e8;
+    --muted:    #9a9a9a;
+    --dim:      #666;
+    --accent:   #d4a054;
+    --border:   rgba(255,255,255,0.08);
+    --radius:   10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.8;
+    font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════════════════════════════
+     HERO SECTION
+  ══════════════════════════════════ */
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: 
+      radial-gradient(ellipse 60% 80% at 85% 55%, rgba(180, 120, 50, 0.4) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 60% at 75% 70%, rgba(140, 80, 30, 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 60% 0%, rgba(60, 40, 20, 0.3) 0%, transparent 70%),
+      linear-gradient(180deg, #1a1410 0%, #111 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, transparent 20%, rgba(17,17,17,0.85) 65%);
+    z-index: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 3;
+    max-width: 520px;
+    opacity: 0;
+    animation: rise 0.9s ease forwards;
+  }
+
+  .hero-text h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(40px, 5.5vw, 54px);
+    font-weight: 420;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .hero-text .subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+  }
+
+  .hero-mic {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    animation: micFloat 0.9s 0.2s ease forwards;
+  }
+
+  .hero-mic img {
+    height: 90%;
+    width: auto;
+    object-fit: contain;
+    object-position: right;
+    filter: drop-shadow(0 20px 80px rgba(180, 120, 40, 0.4)) drop-shadow(0 4px 30px rgba(0,0,0,0.6));
+  }
+
+  @keyframes micFloat {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══════════════════════════════════
+     CONTENT AREA
+  ══════════════════════════════════ */
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 28px 120px;
+  }
+
+  /* ── PROSE ── */
+  .prose {
+    opacity: 0;
+    animation: rise 0.8s 0.45s ease forwards;
+  }
+
+  .prose p {
+    color: var(--muted);
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+
+  .prose p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── FULL-WIDTH DIVIDER ── */
+  .full-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── QUOTE SECTION (between hero and content) ── */
+  .quote-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 28px;
+    opacity: 0;
+    animation: rise 0.8s 0.3s ease forwards;
+  }
+
+  .quote {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .quote-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .quote-body blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .quote-body cite {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--dim);
+    font-weight: 300;
+  }
+
+  /* ── CONTENT DIVIDER (700px) ── */
+  .content-divider {
+    max-width: 700px;
+    margin: 0 auto;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FEATURED ── */
+  .featured {
+    opacity: 0;
+    animation: rise 0.8s 0.5s ease forwards;
+  }
+
+  .featured h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .featured-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .featured-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    padding: 14px 18px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .featured-list li:hover {
+    background: #222;
+    color: var(--text);
+  }
+
+  .featured-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── VIDEOS ── */
+  .videos-section {
+    margin-top: 56px;
+    opacity: 0;
+    animation: rise 0.8s 0.6s ease forwards;
+  }
+
+  .videos-section h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .video-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
+  }
+
+  .video-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .video-card:hover {
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: none;
+  }
+
+  .video-card .video-label {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--dim);
+    opacity: 0;
+    animation: rise 0.8s 0.7s ease forwards;
+  }
+
+  /* ── ANIMATION ── */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { min-height: 480px; }
+    .hero-inner { padding: 48px 24px; }
+    .hero-text { max-width: 100%; }
+    .hero-mic { right: 0; }
+    .hero-mic img { height: 70%; }
+    .quote-section { padding: 30px 20px; }
+    .quote { flex-direction: column; text-align: center; gap: 16px; }
+    .quote-img { width: 68px; height: 68px; }
+    .page { padding: 48px 20px 80px; }
+    .video-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Identitet, mediji<br>i mentalno zdravlje</h1>
+      <p class="subtitle">Projekt učenika 2.F razreda</p>
+    </div>
+    <div class="hero-mic">
+      <img src="mikrofon.png" alt="Mikrofon">
+    </div>
+  </div>
+</div>
+
+<!-- ══ DIVIDER (full width) ══ -->
+<div class="full-divider"></div>
+
+<!-- ══ QUOTE ══ -->
+<div class="quote-section">
+  <div class="quote">
+    <img class="quote-img" src="media.jpg" alt="Mediji i identitet">
+    <div class="quote-body">
+      <blockquote>„We shape our tools, and thereafter our tools shape us."</blockquote>
+      <cite>— Marshall McLuhan</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DIVIDER (700px) ══ -->
+<div class="content-divider"></div>
+
+<!-- ══ CONTENT ══ -->
+<div class="page">
+
+  <div class="prose">
+    <p>
+      U svijetu u kojem notifikacije oblikuju našu svakodnevicu, a glazba nas prati od jutra do večeri, 
+      pitanje identiteta više nije jednostavno. Tko smo kada smo online, a tko kada se ekran ugasi? 
+      Koliko na naše misli, osjećaje i odluke utječu mediji koje svakodnevno konzumiramo — i jesmo li toga uopće svjesni?
+    </p>
+    <p>
+      Projekt <i>Podcasti - identitet, mediji i mentalno zdravlje</i> nastao je iz potrebe da se ta pitanja istraže dublje i iskrenije. 
+      Učenici 2.F razreda, uz mentorstvo prof. Marije Cestarić, kroz multimedijske radove uranjaju u svijet 
+      digitalne stvarnosti koja nas okružuje, ali i oblikuje. Kroz vlastita istraživanja i kreativne pristupe 
+      otvaraju teme poput utjecaja glazbe na naš mozak i emocije, odnosa između online i stvarnog identiteta, 
+      uloge influencera u razgovorima o mentalnom zdravlju te izazova digitalnog preopterećenja.
+    </p>
+    <p>
+      Ovaj projekt nije samo niz zadataka — on je prostor za propitivanje, eksperimentiranje i izražavanje. 
+      Korištenjem suvremenih digitalnih alata učenici razvijaju ne samo tehničke vještine, već i sposobnost 
+      kritičkog promišljanja, komunikacije i timskog rada. Rezultat su radovi koji ne nude jednostavne odgovore, 
+      već potiču na razmišljanje: o nama samima, o svijetu u kojem živimo i o tome kako pronaći ravnotežu između njih.
+    </p>
+  </div>
+
+
+  <div class="videos-section">
+    <h2>Pogledaj radove</h2>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/73SbVarMiDY" allowfullscreen></iframe>
+        <div class="video-label">Pink Mics – Lucija Krajnik i Zara Zrnić</div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/Mc-sx25mCkw" allowfullscreen></iframe>
+        <div class="video-label">Moderni problemi – Vita Hudika, Maša Gračan i Lucija Vrljić</div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/RBlLKfVvmgY" allowfullscreen></iframe>
+        <div class="video-label">Influenceri i mentalno zdravlje – Frida Ladan, Mia Stanić i Iva Janjuš</div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/t2o-EMPIQoQ" allowfullscreen></iframe>
+        <div class="video-label">Na loptama – Dorian Kovačević, Niko Marić i Nikola Fiolić</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2.F razred · prof. Marija Cestarić · 2026.
+  </footer>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll('.video-card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+cards.forEach(c => observer.observe(c));
+</script>
+
+</body>
+</html>
